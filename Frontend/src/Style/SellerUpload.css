@@ -1,0 +1,85 @@
+/* Modern seller upload styles */
+.seller-wrap {
+  width: 100%;
+  max-width: none;
+  margin: 24px 0;
+  padding: 28px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(250,250,252,0.9));
+  box-shadow: 0 8px 30px rgba(16,24,40,0.08);
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+.seller-header {
+  display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;gap:12px
+}
+.seller-title {font-size:20px;font-weight:700;color:#0f172a;margin:0}
+.seller-sub {color:#475569;font-size:13px;margin-left:8px}
+
+.seller-grid {display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:start}
+
+/* modern grid variant used by the updated markup */
+.seller-grid.modern-grid{grid-template-columns:1fr 380px;gap:28px}
+
+.upload-card{background:#ffffff;border-radius:12px;padding:18px;border:1px solid rgba(15,23,42,0.04)}
+
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.form-row.single{grid-template-columns:1fr}
+.field{display:flex;flex-direction:column}
+.field label{font-size:12px;color:#334155;margin-bottom:6px}
+.field input[type='text'], .field input[type='number'], .field textarea{padding:10px 12px;border-radius:8px;border:1px solid #e6eef9;background:#fbfdff;outline:none;font-size:14px;color:#0f172a}
+.field input:focus, .field textarea:focus{border-color:#7c3aed;box-shadow:0 0 0 4px rgba(124,58,237,0.06)}
+.field textarea{min-height:90px;resize:vertical}
+
+/* improved form card */
+.form-card {padding:22px}
+.seller-form label{display:block;margin-bottom:6px;font-size:13px;color:#334155;font-weight:600}
+.seller-form .field{margin-bottom:12px}
+.seller-form input[type='text'], .seller-form input[type='number'], .seller-form textarea{padding:12px 14px;border-radius:10px;border:1px solid #e6eef9;background:#fff;box-shadow:inset 0 1px 0 rgba(2,6,23,0.02)}
+
+.price-row{display:flex;align-items:center;gap:8px}
+.price-row .currency{background:linear-gradient(90deg,#fafafa,#f2f2f2);border:1px solid #eef2ff;padding:8px 10px;border-radius:8px;color:#333;font-weight:700}
+.price-row input{flex:1;padding:10px;border-radius:8px;border:1px solid #eef2ff}
+
+.btn {display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;border:none;cursor:pointer;font-weight:600}
+.btn-primary{background:linear-gradient(90deg,#7c3aed,#ff7a00);color:white}
+
+/* Make the upload button text black on the admin/seller upload form */
+.seller-form .btn-primary{ color: #000; }
+.btn-ghost{background:transparent;border:1px solid #e6eef9;color:#0f172a}
+
+.meta {display:flex;align-items:center;gap:12px;font-size:13px;color:#64748b;margin-bottom:8px}
+
+.preview {padding:18px;border-radius:14px;background:linear-gradient(180deg, #ffffff,#f8fbff);border:1px solid rgba(15,23,42,0.04);display:flex;flex-direction:column;gap:12px;align-items:center;min-height:260px}
+.modern-thumb{width:100%;height:240px;border-radius:12px;background:#f8fafc;display:flex;align-items:center;justify-content:center;overflow:hidden;border:1px dashed #e6eef9}
+.modern-thumb img{width:100%;height:100%;object-fit:cover}
+.preview-title{font-weight:800;color:#0f172a;font-size:18px}
+.preview-price{color:#fb6a4a;font-weight:800;font-size:18px}
+.preview-note{font-size:13px;color:#64748b;text-align:center}
+
+.status {margin-top:12px;font-size:14px}
+.success{color:#059669}
+.error{color:#ef4444}
+
+@media (max-width: 920px){
+  .seller-grid, .seller-grid.modern-grid{grid-template-columns:1fr;gap:18px}
+  .seller-wrap{padding:18px;margin:12px}
+  .modern-thumb{width:100%;height:220px}
+  .form-card{padding:14px}
+  .seller-form input, .seller-form textarea{padding:10px}
+}
+
+/* file upload area (drag/drop) */
+.file-area{margin-top:8px;border:2px dashed rgba(2,6,23,0.06);padding:10px;border-radius:10px;display:flex;flex-direction:column;align-items:center;gap:6px;background:linear-gradient(180deg,#fff,#fbfdff)}
+.file-area input[type=file]{position:relative;display:block;opacity:1}
+.file-area small{font-size:12px;color:#64748b}
+
+/* preview Column */
+.preview-col{display:block}
+.modern-preview{padding:20px}
+
+/* success / error status */
+.status.success{background:#ecfdf5;color:#065f46;padding:8px 12px;border-radius:8px;margin-top:12px}
+.status.error{background:#fff1f2;color:#7f1d1d;padding:8px 12px;border-radius:8px;margin-top:12px}
+
+.smallish{font-size:13px;color:#334155;margin:0 0 8px 0}

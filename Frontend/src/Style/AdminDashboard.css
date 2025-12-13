@@ -1,0 +1,83 @@
+/* Modern AdminDashboard styles */
+.admin-dashboard{display:flex;min-height:100vh;background:#f7fafc;color:#0f172a;font-family:Inter,system-ui,Arial,Helvetica,sans-serif}
+.admin-sidebar{width:220px;padding:28px;display:flex;flex-direction:column;gap:18px;background:linear-gradient(180deg,#0f172a, #0b1220);color:#e6eef8;transition:transform .18s ease,opacity .18s ease}
+.admin-sidebar .brand{font-weight:700;font-size:18px;letter-spacing:0.2px}
+.side-nav{display:flex;flex-direction:column;gap:8px;margin-top:6px}
+.nav-item{background:transparent;border:0;padding:10px 12px;color:#cfe8ff;border-radius:8px;text-align:left;cursor:pointer;font-weight:600;transition:all .12s ease}
+.nav-item.active,.nav-item:hover{background:rgba(255,255,255,0.06);transform:translateY(-1px)}
+.sidebar-footer{margin-top:auto;font-size:12px;color:#9fb7d7;opacity:.95}
+
+.admin-main{flex:1;padding:26px 32px;background:linear-gradient(180deg,#f6f8fb,#ffffff)}
+.admin-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}
+.page-title{margin:0;font-size:22px;color:#0f172a}
+.page-sub{color:#475569;font-size:13px;margin-top:4px}
+.header-actions{display:flex;gap:12px;align-items:center}
+.header-actions .search input{padding:8px 12px;border-radius:8px;border:1px solid #e6eef8;background:white;min-width:220px;max-width:420px;width:100%;
+  color: #000; /* user typed text -> black */
+  font-size: 1rem; /* slightly larger for readability */
+}
+.header-actions .search input::placeholder{color:rgba(0,0,0,0.45)}
+.btn-ghost{background:transparent;border:1px solid rgba(15,23,42,.06);padding:8px 12px;border-radius:8px;cursor:pointer}
+
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:20px}
+.stat-card{display:flex;align-items:center;gap:12px;padding:18px;border-radius:14px;color:#fff;box-shadow:0 6px 18px rgba(2,6,23,0.08);min-height:88px}
+.stat-icon{font-size:28px;background:rgba(255,255,255,0.12);padding:10px;border-radius:12px}
+.stat-value{font-size:18px;font-weight:700}
+.stat-label{font-size:13px;opacity:.95}
+
+.card{background:white;border-radius:12px;padding:18px;box-shadow:0 6px 18px rgba(2,6,23,0.06);margin-bottom:18px}
+.card.split{display:grid;grid-template-columns:2fr 1fr;gap:18px}
+.card-title{margin:0 0 12px 0;font-size:16px}
+.recent-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
+.recent-item{display:flex;align-items:center;gap:12px;padding:10px;border-radius:10px;border:1px solid #f1f5f9}
+.recent-item img{width:54px;height:54px;border-radius:8px;object-fit:cover;background:#fff;border:1px solid #e6eef8}
+.recent-item .meta .title{font-weight:700}
+.recent-item .meta .sub{font-size:12px;color:#64748b}
+.recent-item .actions{margin-left:auto;display:flex;gap:8px}
+.btn-sm{padding:6px 10px;border-radius:8px;border:1px solid rgba(15,23,42,.06);background:transparent;cursor:pointer}
+.btn-danger{background:#fee2e2;border-color:#fecaca}
+
+.quick-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.action{padding:12px;border-radius:10px;border:1px dashed #e6eef8;background:linear-gradient(180deg,#ffffff,#fbfdff);cursor:pointer}
+.smallish{font-size:13px;color:#334155;margin:0 0 8px 0}
+.status-pills{display:flex;gap:8px}
+.pill{padding:6px 10px;border-radius:999px;background:#f1f5f9;color:#0f172a;border:1px solid #e6eef8;font-size:12px}
+.pill.green{background:linear-gradient(90deg,#dafbe8,#b7f1dd);border-color:#b7f1dd}
+
+.admin-footer{margin-top:26px;font-size:13px;color:#94a3b8;text-align:center}
+
+/* small screens */
+@media (max-width:900px){
+  .admin-dashboard{flex-direction:column}
+  /* start hidden on small screens - collapsible */
+  .admin-sidebar{width:280px;flex-direction:column;align-items:stretch;padding:14px;position:fixed;left:0;top:0;bottom:0;transform:translateX(-110%);opacity:0;z-index:40}
+  .admin-sidebar.open{transform:translateX(0);opacity:1;box-shadow:0 12px 30px rgba(2,6,23,0.35)}
+  .admin-sidebar .brand{display:block;padding-bottom:6px}
+  /* nav as row when enough space, otherwise column inside sidebar */
+  .side-nav{flex-direction:column;gap:8px;margin-top:12px}
+  .side-nav{flex-direction:row;gap:8px;margin-left:12px}
+  .admin-main{padding:16px}
+  .card.split{grid-template-columns:1fr}
+  .header-actions .search input{min-width:120px}
+  .sidebar-toggle{display:inline-flex;align-items:center;justify-content:center;border:0;background:transparent;color:inherit;font-size:20px;padding:8px;border-radius:8px;cursor:pointer;margin-right:8px}
+  .sidebar-toggle:focus{outline:2px solid rgba(124,58,237,0.2)}
+  /* close button (only visible when sidebar open on mobile) */
+  .sidebar-close{display:none}
+}
+
+/* translucent page overlay shown when sidebar is open on small screens */
+@media (max-width:900px){
+  .mobile-overlay{position:fixed;left:0;top:0;right:0;bottom:0;background:rgba(2,6,23,0.45);z-index:30}
+}
+
+/* when main area has to show a close control for mobile overlay */
+@media (max-width:900px){
+  .admin-main{padding:16px;position:relative;z-index:10}
+  .admin-header .sidebar-close{display:inline-flex;margin-left:8px;border:0;background:#fff;padding:6px;border-radius:8px;cursor:pointer}
+}
+
+/* ensure the sidebar doesn't push content when visible on desktop */
+@media (min-width:901px){
+  .admin-sidebar{position:relative;transform:none;opacity:1}
+  .sidebar-toggle{display:none}
+}

@@ -1,0 +1,60 @@
+*{ 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+html, body {
+    /* prevent horizontal overflow across the whole app */
+    overflow-x: hidden;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    background: #edeae9;
+}
+
+/* container to center all top-level page content */
+.site-container{
+    /* make the site wrapper full width so pages can use the full viewport */
+    width:100%;
+    max-width: none;
+    margin: 0; /* no horizontal centering */
+    padding:20px 18px;
+}
+
+/* ensure images and iframes cannot exceed their container width */
+img, iframe, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* helper to allow true full-bleed sections if desired */
+.site-container.full-bleed{padding-left:0;padding-right:0}
+
+/* small helper to center child components vertically/horizontally */
+.center-all{display:flex;align-items:center;justify-content:center}
+
+/* ------------------------------------------------------------
+    Prevent accidental overlap between major UI sections
+    These lightweight safeguards create local stacking contexts and
+    ensure panels/cards keep spacing so they don't sit on top of each other.
+    ------------------------------------------------------------ */
+.site-container > * { position: relative; z-index: 0; }
+.page-section, .orders-page, .order-card, .panel, .admin-main, .om-body, .card-body, .orders-list, .orders-grid { position: relative; z-index: 0; isolation: isolate; }
+
+/* Force sensible vertical rhythm for major blocks to avoid visual overlap */
+.order-card, .panel, .orders-header, .oc-body, .om-header { margin-bottom: 10px; }
+
+/* Utility: use when a component must be visually separate (clears floats) */
+.no-overlap{clear:both;margin-bottom:12px}
+
+/* Keep fixed elements (sidebar / overlays) with consistent stacking order */
+.admin-sidebar{z-index:40}
+.mobile-overlay{z-index:30}
+.order-modal-overlay{z-index:90}
+
+
+

@@ -1,0 +1,13 @@
+:root{--bg:#fbfdff;--card:#fff;--muted:#64748b}
+
+.admin-products{min-height:70vh;padding:20px;background:var(--bg);font-family:Inter,system-ui,Arial,Helvetica,sans-serif;color:#0f172a}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
+.product-card.admin{background:var(--card);padding:12px;border-radius:12px;box-shadow:0 10px 24px rgba(2,6,23,0.06);display:flex;flex-direction:column;gap:8px;align-items:stretch}
+.product-card.admin img{height:140px;width:100%;object-fit:cover;border-radius:8px}
+.product-meta{display:flex;justify-content:space-between;align-items:center;padding:6px}
+.title{font-weight:800}
+.price{font-weight:700;color:#0b1220}
+.product-actions{display:flex;gap:8px;justify-content:flex-end;padding-top:6px}
+.btn-sm{padding:6px 10px;border-radius:8px;border:1px solid rgba(15,23,42,0.06);background:linear-gradient(180deg,#ffffff,#fbfdff);cursor:pointer}
+.btn-danger{background:linear-gradient(90deg,#fee2e2,#fda4af);border:1px solid rgba(245,158,11,0.12)}
+.orders-empty{padding:26px;text-align:center;color:var(--muted);font-weight:700}

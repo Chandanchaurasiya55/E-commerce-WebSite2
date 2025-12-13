@@ -1,0 +1,247 @@
+/* Center the form full screen */
+.auth-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Main container */
+.auth-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  width: 100%;
+  max-width: 900px;
+  animation: slideIn 0.5s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Left section */
+.auth-left {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 40px;
+  text-align: center;
+}
+
+.auth-left .welcome h2 {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Right section */
+.auth-right {
+  padding: 50px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.lock-icon img {
+  width: 90px;
+  height: 90px;
+  margin-bottom: 15px;
+  border-radius: 50%;
+  border: 4px solid #667eea;
+  object-fit: cover;
+}
+
+.subtitle {
+  color: #333;
+  margin-bottom: 25px;
+  font-weight: 600;
+  text-align: center;
+  font-size: 16px;
+}
+
+.form {
+  width: 100%;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 18px;
+}
+
+.field input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 2px solid #e0e0e0;
+  outline: none;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.field input:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 15px rgba(102, 126, 234, 0.2);
+  background: #f9f9ff;
+}
+
+.field input::placeholder {
+  color: #999;
+}
+
+/* Gradient button */
+.btn-grad {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.btn-grad:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+
+.btn-grad:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.auth-message {
+  margin-top: 15px;
+  font-size: 13px;
+  text-align: center;
+  padding: 10px 15px;
+  border-radius: 8px;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.auth-message.success {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.auth-message.error {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* Switch link */
+.switch {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+}
+
+.link {
+  background: none;
+  border: none;
+  color: #667eea;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+  font-size: 14px;
+}
+
+.link:hover {
+  color: #764ba2;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .auth-card {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-left {
+    padding: 40px 30px;
+    display: none;
+  }
+
+  .auth-right {
+    padding: 40px 30px;
+  }
+
+  .auth-left .welcome h2 {
+    font-size: 24px;
+  }
+
+  .lock-icon img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .form {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-card {
+    border-radius: 15px;
+  }
+
+  .auth-right {
+    padding: 30px 20px;
+  }
+
+  .lock-icon img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .field input {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  .btn-grad {
+    padding: 10px;
+    font-size: 14px;
+  }
+}

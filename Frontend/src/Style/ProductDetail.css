@@ -1,0 +1,37 @@
+.product-detail{width:100%;margin:30px auto;padding:18px;background:var(--card-bg, #fff);border-radius:8px;box-shadow:0 6px 20px rgba(0,0,0,0.06);font-family:Inter,system-ui,Arial,Helvetica,sans-serif}
+.detail-header{display:flex;gap:20px;}
+.detail-image-wrap{flex:0 0 360px;background:#f8fafc;padding:12px;border-radius:6px;width: auto; margin: 8rem 3rem 0rem 4rem;}
+.detail-image{width:100%;height:auto; object-fit:cover;border-radius:6px}
+
+/* dots below main image (image selector) */
+.image-dots{display:flex;gap:8px;margin-top:12px;align-items:center;justify-content:center;}
+.image-dot{width:10px;height:10px;border-radius:50%;background:#d1d5db;cursor:pointer;border:1px solid rgba(0,0,0,0.04);transition:transform .12s,background .12s}
+.image-dot:hover{transform:scale(1.15)}
+.image-dot.active{background:#ef4444}
+.detail-meta{flex:1}
+.detail-title{font-size:32px;margin:2rem 0 10px 0px; margin-left: 14rem;}
+.detail-price{font-weight:700;color:#0f172a;margin-bottom:12px;font-size:32px; margin-left: 14.3rem;}
+.detail-about h3{margin:12px 0 6px}
+.detail-about{width:100%;margin:30px auto;padding:18px;background:var(--card-bg, #fff);border-radius:8px;box-shadow:0 6px 20px rgba(0,0,0,0.06);font-family:Inter,system-ui,Arial,Helvetica,sans-serif}
+.detail-about p{color:#334155;line-height:1.4}
+.detail-reviews{margin-top:22px}
+.review-item{padding:10px;border-radius:6px;border:1px solid #eef2ff;margin:8px 0;background:#fbfbff}
+.review-head{font-size:14px;color:#0f172a;margin-bottom:6px}
+.review-comment{color:#334155}
+.no-reviews{color:#64748b}
+.product-detail.error{color:tomato}
+
+/* Actions row */
+.detail-actions{display:flex;gap:12px;margin:12px 0 18px;align-items:center}
+.detail-actions .btn{padding:10px 14px;border-radius:8px;font-weight:600}
+.detail-actions .btn.btn-primary{background:#ef4444;color:#fff;border:none}
+.detail-actions .btn.btn-ghost{background:transparent;border:1px solid #e6eef8;color:#0f172a}
+
+/* Small screens: stack image and meta, and make actions full-width */
+@media (max-width: 760px){
+	.detail-header{flex-direction:column}
+	.detail-image-wrap{flex:0 0 auto;width:100%;}
+	.detail-meta{width:100%}
+	.detail-actions{flex-direction:column;align-items:stretch}
+	.detail-actions .btn{width:100%}
+}
