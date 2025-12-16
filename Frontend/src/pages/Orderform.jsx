@@ -66,9 +66,14 @@ const OrderForm = ({ product }) => {
         return;
       }
 
-  alert('Order placed successfully');
-  // if user is logged in navigate to their orders, otherwise go to home
-  if (token) navigate('/orders'); else navigate('/');
+      // navigate to placed page with order details
+      const placedOrder = data.order || null;
+      if (placedOrder) {
+        navigate('/order-placed', { state: { order: placedOrder } });
+      } else {
+        alert('Order placed successfully');
+        if (token) navigate('/orders'); else navigate('/');
+      }
     } catch (err) {
       console.error('order submit failed', err);
       setError(err?.message || 'Failed to place order');

@@ -1,16 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import "../Style/Navbar.css";
 import { useNavigate } from "react-router-dom";
 
-const Navbar = ({ search, setSearch }) => {
+const Navbar = () => {
   const navigate = useNavigate();
+  const [search, setSearch] = useState('');
 
   const handleSearch = () => {
-    if (search.trim() === "") {
-      alert("Please enter a search term");
-      return;
-    }
-    // Redirect to search results page with query param
+    if (search.trim() === "") return alert("Please enter a search term");
     navigate(`/search?q=${encodeURIComponent(search)}`);
   };
 
@@ -47,7 +44,7 @@ const Navbar = ({ search, setSearch }) => {
           >
             All Products
           </button>
-          <button className="home-subnav-link" onClick={() => navigate("/#")}>
+          <button className="home-subnav-link" onClick={() => navigate("/#")}> 
             Deals
           </button>
         </div>

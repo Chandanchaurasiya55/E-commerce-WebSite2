@@ -3,8 +3,7 @@ import { useLocation, useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import '../Style/ProductDetail.css';
 import Orderform from "../pages/Orderform.jsx";
-import Footer from "../Components/Footer.jsx"
-import Navbar from "../Components/Navbar.jsx";
+// Footer provided by layout
 
 const API = import.meta.env.VITE_API_URL;
 
@@ -55,7 +54,6 @@ const ProductDetail = () => {
 
   return (
     <>
-      <Navbar />
     <div className="product-detail">
       <div className="detail-header">
         <div className="detail-image-wrap">
@@ -95,9 +93,8 @@ const ProductDetail = () => {
             <h3>About</h3>
             <p>{product.description || 'No additional information provided for this product.'}</p>
     </div>
-    <Footer />
-</>
-
+    {/* Footer rendered globally by PublicLayout */}
+    </>
   );
 };
 

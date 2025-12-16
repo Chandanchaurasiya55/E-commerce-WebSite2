@@ -5,8 +5,7 @@ import Products from '../Components/products.jsx';
 import bannerImg from "../assets/home-banner.jpg";
 import bannerImg1 from "../assets/second.jpg";
 import BannerSlider from "../Components/BannerSlider";
-import Footer from "../Components/Footer.jsx";
-import Navbar from "../Components/Navbar.jsx";
+// Footer provided by layout
 
 const API = import.meta.env.VITE_API_URL;
 
@@ -92,8 +91,7 @@ const Home = () => {
 
 
   return (
-   <div className="Home-container">
-          <Navbar search={search} setSearch={setSearch} />
+  <div className="Home-container">
         <BannerSlider images={[bannerImg, bannerImg1]} interval={4500} width={1500} height={340} />
         <div className="Recomend-text">Recommended items</div>
         <div className="products-container">
@@ -120,7 +118,7 @@ const Home = () => {
       </div>
     )}
     </div>
-     <Footer/>
+  {/* Footer rendered globally by PublicLayout */}
  </div>
  
   );

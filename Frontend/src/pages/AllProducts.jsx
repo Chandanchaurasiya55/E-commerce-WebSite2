@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../Style/Home.css';
 import Products from '../Components/products.jsx';
-import Navbar from '../Components/Navbar.jsx';
-import Footer from '../Components/Footer.jsx';
+// Footer provided by layout
 
 const API = import.meta.env.VITE_API_URL;
 
@@ -31,7 +30,6 @@ const AllProducts = () => {
 
   return (
     <div className="AllProducts-page">
-      <Navbar search={search} setSearch={(v)=>{ setSearch(v); setIsSearched(false); }} />
 
       <div className="container">
         <header style={{marginTop:20, marginBottom:10}}>
@@ -68,7 +66,7 @@ const AllProducts = () => {
         </div>
       </div>
 
-      <Footer />
+  {/* Footer rendered globally by PublicLayout */}
     </div>
   );
 };
