@@ -9,6 +9,7 @@ import Orders from "../pages/Orders";
 import ProductDetail from "../pages/ProductDetail";
 import ProtectedAdminRoute from "../Components/ProtectedAdminRoute";
 import SearchResults from "../pages/SearchResults.jsx";
+import AllProducts from "../pages/AllProducts";
 
 
 
@@ -27,6 +28,7 @@ const AppRoutes = () => {
           {/* All other routes use a centered container layout */}
           <Route element={<div className="site-container"><Outlet /></div>}>
             <Route path="/Auth" element={<AdminAuthForm />}></Route>
+            <Route path="/products" element={<AllProducts />} />
             <Route path="/seller" element={<ProtectedAdminRoute><SellerUpload /></ProtectedAdminRoute>} />
             <Route path="/admin-dashboard" element={<ProtectedAdminRoute><AdminDashboard /></ProtectedAdminRoute>} />
             <Route path="/admin-orders" element={<ProtectedAdminRoute><AdminOrders /></ProtectedAdminRoute>} />

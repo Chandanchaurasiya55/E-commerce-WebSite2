@@ -1,0 +1,51 @@
+/* Global responsive utilities - mobile-first */
+:root{
+  --container-max:1200px;
+  --gap:16px;
+}
+
+/* Ensure base layout is fluid */
+html,body,#root{height:100%;}
+body{margin:0;font-family:Inter,system-ui,Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+
+.container{width:100%;max-width:var(--container-max);margin:0 auto;padding:0 16px;box-sizing:border-box}
+
+/* Utility helpers */
+.flex{display:flex}
+.flex-col{display:flex;flex-direction:column}
+.hidden{display:none}
+
+/* Images and media scale */
+img{max-width:100%;height:auto;display:block}
+
+/* Typography scaling */
+h1{font-size:1.5rem}
+@media(min-width:900px){h1{font-size:2rem}}
+
+/* Responsive breakpoints */
+@media (max-width: 1024px){
+  :root{--container-max:920px}
+}
+
+@media (max-width: 820px){
+  :root{--container-max:720px}
+}
+
+@media (max-width: 760px){
+  /* Make site mobile friendly: stack common two-col layouts */
+  .two-col{display:block}
+  .detail-header{flex-direction:column}
+  .nav-center{width:auto;margin-left:0}
+}
+
+/* Make forms responsive */
+.order-form{padding:16px;margin:18px auto;width:100%;box-sizing:border-box}
+
+/* Navbar collapsing helpers */
+.navbar-compact .nav-center{display:none}
+
+/* Small tweaks for admin tables/cards */
+@media(max-width:600px){
+  .orders-list,.orders-grid{padding:8px}
+  .order-card{width:100%}
+}

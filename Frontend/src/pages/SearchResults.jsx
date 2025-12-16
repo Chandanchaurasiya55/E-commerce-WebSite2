@@ -39,12 +39,15 @@ const SearchResults = () => {
 
   return (
     <div className="Home-container">
-      <h2>Search Results for "{searchTerm}"</h2>
+      <h2 className="search-header">Search Results for "{searchTerm}"</h2>
       <div className="products-container">
         {filteredProducts.length > 0 ? (
-          filteredProducts.map((product) => (
-            <Products key={product._id || product.id} product={product} />
-          ))
+          filteredProducts.map((product) => {
+            // replace leading $ with AED for display on Search Results
+            const price = typeof product.price === 'string' ? product.price.replace(/^\s*\$/,'AED ') : product.price;
+            const p = { ...product, price };
+            return <Products key={product._id || product.id} product={p} />;
+          })
         ) : (
           <div className="no-products">
             <h3>❌ No products found for "{searchTerm}"</h3>

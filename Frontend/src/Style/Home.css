@@ -228,6 +228,10 @@
   margin: 30px 30px 0 40px;
 }
 
+/* Search Results page tweaks */
+.search-header{ text-align:center; margin-top: 18px; font-size:1.4rem }
+.no-products{ text-align:center }
+
 /* Responsive */
 @media (max-width: 1024px) {
   .products-container {

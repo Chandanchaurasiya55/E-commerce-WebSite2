@@ -1,6 +1,6 @@
 .product-detail{width:100%;margin:30px auto;padding:18px;background:var(--card-bg, #fff);border-radius:8px;box-shadow:0 6px 20px rgba(0,0,0,0.06);font-family:Inter,system-ui,Arial,Helvetica,sans-serif}
 .detail-header{display:flex;gap:20px;}
-.detail-image-wrap{flex:0 0 360px;background:#f8fafc;padding:12px;border-radius:6px;width: auto; margin: 8rem 3rem 0rem 4rem;}
+.detail-image-wrap{flex:0 0 360px;background:#f8fafc;padding:12px;border-radius:6px;width: auto; margin: 1.5rem 0 0 0;}
 .detail-image{width:100%;height:auto; object-fit:cover;border-radius:6px}
 
 /* dots below main image (image selector) */
@@ -9,8 +9,8 @@
 .image-dot:hover{transform:scale(1.15)}
 .image-dot.active{background:#ef4444}
 .detail-meta{flex:1}
-.detail-title{font-size:32px;margin:2rem 0 10px 0px; margin-left: 14rem;}
-.detail-price{font-weight:700;color:#0f172a;margin-bottom:12px;font-size:32px; margin-left: 14.3rem;}
+.detail-title{font-size:32px;margin:1rem 0 10px 0px;}
+.detail-price{font-weight:700;color:#0f172a;margin-bottom:12px;font-size:32px;}
 .detail-about h3{margin:12px 0 6px}
 .detail-about{width:100%;margin:30px auto;padding:18px;background:var(--card-bg, #fff);border-radius:8px;box-shadow:0 6px 20px rgba(0,0,0,0.06);font-family:Inter,system-ui,Arial,Helvetica,sans-serif}
 .detail-about p{color:#334155;line-height:1.4}

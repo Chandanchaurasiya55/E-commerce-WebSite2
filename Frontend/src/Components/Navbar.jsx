@@ -43,7 +43,7 @@ const Navbar = ({ search, setSearch }) => {
           </button>
           <button
             className="home-subnav-link"
-            onClick={() => navigate(`/admin-product`)}
+            onClick={() => navigate(`/products`)}
           >
             All Products
           </button>
