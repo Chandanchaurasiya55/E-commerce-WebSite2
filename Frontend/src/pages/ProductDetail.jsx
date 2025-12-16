@@ -82,7 +82,7 @@ const ProductDetail = () => {
           <h1 className="detail-title">{product.title}</h1>
           {product.price && <div className="detail-price">{product.price}</div>}
           
-          <Orderform />
+          <Orderform product={product} />
          
 
           

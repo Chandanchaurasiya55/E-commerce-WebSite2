@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 import "../Style/orderform.css";
+import { useNavigate } from 'react-router-dom';
 
-const OrderForm = () => {
+const OrderForm = ({ product }) => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     fullName: "",
     mobile: "",
-    quantity: "",
+    quantity: "1",
     emirates: "",
     address: "",
   });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const handleChange = (e) => {
     setFormData({
@@ -17,9 +21,60 @@ const OrderForm = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form Data:", formData);
+    setError('');
+    const token = localStorage.getItem('userToken');
+
+    try {
+      setLoading(true);
+      const API = import.meta.env.VITE_API_URL;
+
+      // Build items array: if product prop passed use buy-now flow, otherwise rely on cart in backend
+      let items = [];
+      if (product && product._id) {
+        items = [{
+          product: product._id,
+          title: product.title || product.name || 'Product',
+          price: product.price || '0',
+          images: product.images || (product.img ? [product.img] : []),
+          quantity: Number(formData.quantity) || 1
+        }];
+      }
+
+      const address = {
+        name: formData.fullName,
+        street: formData.address,
+        city: formData.emirates,
+        country: 'UAE',
+        phone: formData.mobile
+      };
+
+      const headers = { 'Content-Type': 'application/json' };
+      if (token) headers.Authorization = `Bearer ${token}`;
+      const res = await fetch(`${API}/api/order/checkout`, {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({ items, address, paymentMethod: 'cod' }),
+        credentials: 'include'
+      });
+
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        const msg = data.message || 'Failed to place order';
+        setError(msg);
+        return;
+      }
+
+  alert('Order placed successfully');
+  // if user is logged in navigate to their orders, otherwise go to home
+  if (token) navigate('/orders'); else navigate('/');
+    } catch (err) {
+      console.error('order submit failed', err);
+      setError(err?.message || 'Failed to place order');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -99,7 +154,9 @@ const OrderForm = () => {
         required
       />
 
-      <button type="submit">Submit Order</button>
+      {error && <div className="form-error">{error}</div>}
+
+      <button type="submit" disabled={loading}>{loading ? 'Placing…' : 'Submit Order'}</button>
     </form>
   );
 };

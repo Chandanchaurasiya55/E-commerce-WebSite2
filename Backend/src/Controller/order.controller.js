@@ -6,10 +6,9 @@ const { createNotification } = require('./notification.controller');
 // Checkout — create an order from user's cart
 async function checkout(req, res) {
   try {
-      const userId = req.user._id;
-      const user = await User.findById(userId).populate('cart.product');
-
-      if (!user) return res.status(404).json({ message: 'User not found' });
+  // Support both authenticated users and guest (unauthenticated) orders.
+  const userId = req.user ? req.user._id : null;
+  const user = userId ? await User.findById(userId).populate('cart.product') : null;
 
       // Support buy-now: client may pass an `items` array in the request to place an immediate order
       let items = [];
@@ -24,7 +23,8 @@ async function checkout(req, res) {
           quantity: it.quantity || 1
         }));
       } else {
-        if (!user.cart || user.cart.length === 0) return res.status(400).json({ message: 'Cart is empty' });
+        // If items not provided in request body, fall back to authenticated user's cart.
+        if (!user || !user.cart || user.cart.length === 0) return res.status(400).json({ message: 'Cart is empty or items missing for guest checkout' });
         usedCart = true;
         // Build order items from cart
         items = user.cart.map(c => {
@@ -48,7 +48,7 @@ async function checkout(req, res) {
     }, 0);
 
     // Accept address and payment method from request body
-    const address = req.body?.address || {};
+  const address = req.body?.address || {};
     const paymentMethod = req.body?.paymentMethod || 'unknown';
 
     // Minimal validation: require street and city or postalCode/country
@@ -57,20 +57,21 @@ async function checkout(req, res) {
       console.warn('checkout warning: address missing or incomplete for user', userId);
     }
 
-    const saved = await Order.create({ user: userId, items, totalAmount, shippingAddress: address, paymentMethod });
+  const saved = await Order.create({ user: userId || null, items, totalAmount, shippingAddress: address, paymentMethod });
 
     // Clear cart only when the order was built from the user's cart
-    if (usedCart) {
+    if (usedCart && user) {
       user.cart = [];
       await user.save();
     }
 
     // create admin notification about new order: include the order details in notification.meta
     try {
-      const userName = user.Fullname || user.Email || String(userId);
+      // Build notification meta. For guest orders, include guest info from address.
+      const userName = (user && (user.Fullname || user.Email)) || (address && address.name) || 'Guest';
       const meta = {
         orderId: saved._id,
-        user: { id: user._id, name: user.Fullname || null, email: user.Email || null, phone: user.phone || null },
+        user: user ? { id: user._id, name: user.Fullname || null, email: user.Email || null, phone: user.phone || null } : { id: null, name: address?.name || 'Guest', email: null, phone: address?.phone || null },
         items: items.map(it => ({ title: it.title, product: it.product, price: it.price, quantity: it.quantity })),
         totalAmount,
         shippingAddress: address || null,
@@ -81,7 +82,7 @@ async function checkout(req, res) {
       await createNotification({
         type: 'order',
         message: `${userName} placed a new order${methodNote} (${saved._id})`,
-        user: userId,
+        user: userId || null,
         meta // attach full order data to notification meta so admins can preview details
       });
     } catch (err) {

@@ -4,8 +4,8 @@ const orderController = require('../Controller/order.controller');
 const authenticateUser = require('../Middleware/auth.middleware');
 const authenticateAdmin = require('../Middleware/admin.middleware');
 
-// User checkout
-router.post('/checkout', authenticateUser, orderController.checkout);
+// User checkout (allow guest checkout without authentication)
+router.post('/checkout', orderController.checkout);
 
 // User: fetch own orders
 router.get('/my', authenticateUser, orderController.getUserOrders);

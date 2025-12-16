@@ -10,7 +10,8 @@ const orderItemSchema = new mongoose.Schema({
 });
 
 const orderSchema = new mongoose.Schema({
-  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+  // user is optional to support guest/anonymous orders
+  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: false },
   items: [orderItemSchema],
   totalAmount: { type: Number, required: true, default: 0 },
   status: { type: String, default: 'placed' },
